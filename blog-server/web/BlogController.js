@@ -64,10 +64,10 @@ function queryBlogByPage(request, response) {
 path.set('/queryBlogByPage', queryBlogByPage);
 
 function editBlog(request, response) {
-    const params = url.parse(request.url, true).query;
     request.on('data', data => {
-        const tags = params.tags.toString().replace(/ /g, '').replace(/，/g, ',');
-        blog.insertBlog(params.title, data.toString(), 0, tags, timeUtil.getNow(), timeUtil.getNow(), result => {
+        const result = JSON.parse(data.toString());
+        const tags = result.tags.toString().replace(/ /g, '').replace(/，/g, ',');
+        blog.insertBlog(result.title, result.content, 0, tags, timeUtil.getNow(), timeUtil.getNow(), result => {
             response.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
             response.write(respUtil.writeResult('success', '添加成功', null));
             response.end();

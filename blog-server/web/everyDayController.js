@@ -5,7 +5,8 @@ const path = new Map();
 
 function editEveryDay(request, response) {
     request.on('data', data => {
-        everyDayDao.insertEveryDay(data.toString(), timeUtil.getNow(), result => {
+        const result = JSON.parse(data.toString());
+        everyDayDao.insertEveryDay(result.content, timeUtil.getNow(), result => {
             response.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
             response.write(respUtil.writeResult('success', '添加成功', null));
             response.end();

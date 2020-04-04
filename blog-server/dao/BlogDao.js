@@ -1,14 +1,14 @@
 const dbutil = require('./DBUtil');
 
-function insertBlog(title, content,views, tags, ctime, utime, callback) {
+function insertBlog(title, content, views, tags, ctime, utime, callback) {
     const insertSql = "insert into blog (title, content, views, tags, ctime, utime) values (?, ?, ?, ?, ?, ?)";
     const params = [title, content, views, tags, ctime, utime];
     const connection = dbutil.createConnection();
     connection.connect();
     connection.query(insertSql, params, (error, result) => {
-        if(error) {
+        if (error) {
             console.log(error);
-        }else {
+        } else {
             callback(result);
         }
     });
@@ -21,9 +21,9 @@ function queryBlogByPage(page, pageSize, callback) {
     const connection = dbutil.createConnection();
     connection.connect();
     connection.query(selectSql, params, (error, result) => {
-        if(error) {
+        if (error) {
             console.log(error);
-        }else {
+        } else {
             callback(result);
         }
     });
@@ -36,9 +36,9 @@ function queryBlogCount(callback) {
     const conn = dbutil.createConnection();
     conn.connect();
     conn.query(selectSql, params, (error, result) => {
-        if(error) {
+        if (error) {
             console.log(error);
-        }else {
+        } else {
             callback(result);
         }
     });
@@ -50,9 +50,9 @@ function queryBlogById(id, callback) {
     const conn = dbutil.createConnection();
     conn.connect();
     conn.query(selectSql, params, (error, result) => {
-        if(error) {
+        if (error) {
             console.log(error);
-        }else {
+        } else {
             callback(result);
         }
     });
@@ -64,9 +64,9 @@ function queryAllBlog(callback) {
     const conn = dbutil.createConnection();
     conn.connect();
     conn.query(selectSql, params, (error, result) => {
-        if(error) {
+        if (error) {
             console.log(error);
-        }else {
+        } else {
             callback(result);
         }
     });
@@ -78,9 +78,9 @@ function addViews(id, callback) {
     const conn = dbutil.createConnection();
     conn.connect();
     conn.query(selectSql, params, (error, result) => {
-        if(error) {
+        if (error) {
             console.log(error);
-        }else {
+        } else {
             callback(result);
         }
     });
@@ -92,9 +92,9 @@ function queryHotBlog(size, callback) {
     const conn = dbutil.createConnection();
     conn.connect();
     conn.query(selectSql, params, (error, result) => {
-        if(error) {
+        if (error) {
             console.log(error);
-        }else {
+        } else {
             callback(result);
         }
     });

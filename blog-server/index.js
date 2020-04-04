@@ -20,8 +20,8 @@ app.get('/queryCommentsCountByBlogId', loader.get('/queryCommentsCountByBlogId')
 app.get('/queryRandomTags', loader.get('/queryRandomTags'));
 app.get('/queryHotBlog', loader.get('/queryHotBlog'));
 
-app.get('/queryByTag', loader.get('/queryByTag'));
-// app.get('/queryByTagCount', loader.get('/queryByTagCount'));
+app.get('/queryByTagId', loader.get('/queryByTagId'));
+app.get('/queryByTagIdCount', loader.get('/queryByTagIdCount'));
 
 app.listen(globalConfig.port, () => {
     console.log('服务器已启动');
